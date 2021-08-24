@@ -36,7 +36,7 @@ service bind9 restart
 
 # unzip and drop in comm rules and snapshot (snort)
 wget https://github.com/ben3636/suricata-pi/blob/main/suricata
-mv suricata /etc/default/suricata 
+mv /root/suricata-pi/suricata /etc/default/suricata 
 service suricata start
 
 
