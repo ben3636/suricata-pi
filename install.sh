@@ -81,7 +81,7 @@ sleep 15
 echo
 echo -n "Type 'yes' once this is complete and press enter: "
 read choice </dev/tty
-while [[ $choice == '' ]] || [[ $choice != "yes" ]]
+while [[ $choice == "" ]] || [[ $choice != "yes" ]]
 do
   echo
   echo -n "Type 'yes' once this is complete and press enter: "
