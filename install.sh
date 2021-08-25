@@ -72,6 +72,20 @@ nano /etc/bind/named.conf.options # Add Forwarder
 service bind9 restart
 
 
+# Install // Enable DHCP Server
+clear
+echo "Installing DHCP Server..."
+echo
+sleep 10
+apt install isc-dhcp-server -y
+cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.bak
+mv /root/suricata-pi/dhcpd.conf /etc/dhcp/
+clear
+echo "Please specify the IPv4 Interface for DHCP to Listen on..."
+sleep 10
+nano /etc/default/isc-dhcp-server 
+
+
 # Install & Run Evebox
 clear
 echo "Installing Evebox..."
