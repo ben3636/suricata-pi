@@ -1,5 +1,9 @@
 #!/bin/bash
 
+###---TO DO---###
+# Enable Evebox auth/custom options
+
+
 # Update
 clear
 echo "Updating..."
