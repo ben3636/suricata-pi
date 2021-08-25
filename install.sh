@@ -74,10 +74,29 @@ service bind9 restart
 
 # Install // Enable DHCP Server
 clear
+echo "!!!---WARNING: YOU MUST DISABLE YOUR CURRENT DHCP SERVER ON THE NETWORK BEFORE CONTINUING!---!!!"
+echo
+echo "Failing to do so will likely create a denial of service scenario and wreak absolute fucking havoc on your network"
+sleep 15
+echo
+echo -n "Type 'yes' once this is complete and press enter: "
+read choice </dev/tty
+while [[ $choice == '' ]] || [[ $choice != "yes" ]]
+do
+  echo
+  echo -n "Type 'yes' once this is complete and press enter: "
+  read choice </dev/tty
+done
+clear
 echo "Installing DHCP Server..."
 echo
 sleep 10
 apt install isc-dhcp-server -y
+clear
+echo "DHCP Server has Gateway/DNS set to '192.168.1.254'"
+echo
+echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'
+sleep 10
 cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.bak
 mv /root/suricata-pi/dhcpd.conf /etc/dhcp/
 clear
