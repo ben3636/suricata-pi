@@ -5,7 +5,7 @@
 # Scirius install
 # Log management
 # Reboot persistence for all services
-
+# Push notifications via IFTTT
 
 # Update
 clear
