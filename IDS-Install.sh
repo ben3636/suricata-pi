@@ -7,6 +7,13 @@ apt update
 apt-get install suricata -y
 nano /etc/suricata/suricata.yaml # Edit Home Net & Interface // Add /var/lib/suricata/*.rules
 
+# Unpack Rules
+mkdir /root/suricata-pi/snort-rules
+tar -xvf /root/suricata-pi/snortrules-snapshot-2983.tar.gz -C /root/suricata-pi/snort-rules/
+tar -xvf /root/suricata-pi/community-rules.tar.gz
+mv suricata-pi/community-rules/community.rules /var/lib/suricata/rules/
+mv suricata-pi/snort-rules/rules/*.rules /var/lib/suricata/rules/
+
 # Update Suricata // Enable Sources
 suricata-update
 suricata-update update-sources
