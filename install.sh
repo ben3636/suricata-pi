@@ -16,7 +16,11 @@ add-apt-repository ppa:oisf/suricata-stable
 apt update
 apt-get install suricata -y
 clear
-echo "Please change $HOME_NET and the 'af_packet' Interface"
+echo "Please change the following..."
+echo
+echo "1. Change $HOME_NET"
+echo "2. Change 'af_packet' Interface"
+echo "3. Add '/var/lib/suricata/rules/*.rules' to ruleset"
 sleep 10
 nano /etc/suricata/suricata.yaml # Edit Home Net & Interface // Add /var/lib/suricata/*.rules
 
