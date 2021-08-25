@@ -2,6 +2,7 @@
 
 ###---TO DO---###
 # Enable Evebox auth/custom options
+# Scirius install
 
 
 # Update
