@@ -3,6 +3,8 @@
 ###---TO DO---###
 # Enable Evebox auth/custom options
 # Scirius install
+# Log management
+# Reboot support for all services
 
 
 # Update
