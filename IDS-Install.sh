@@ -5,6 +5,7 @@ apt update && apt upgrade -y
 add-apt-repository ppa:oisf/suricata-stable
 apt update
 apt-get install suricata -y
+nano /etc/suricata/suricata.yaml # Edit Home Net & Interface
 
 # Update Suricata // Enable Sources
 suricata-update
