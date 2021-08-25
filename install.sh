@@ -2,7 +2,7 @@
 
 # Update
 clear
-echo "Updating...
+echo "Updating..."
 echo
 sleep 5
 apt update && apt upgrade -y
@@ -76,7 +76,7 @@ unzip evebox-0.14.0-linux-arm64.zip
 clear
 echo "Install Completed!"
 echo
-echo "Starting Evebox...(Web Interface Will Be Available on Port 5636)"
+echo "Starting Evebox...Web Interface Will Be Available on Port 5636"
 sleep 10
 cd evebox-0.14.0-linux-arm64/ && ./evebox server -v -D . --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0
 
