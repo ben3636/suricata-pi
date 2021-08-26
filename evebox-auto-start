@@ -4,6 +4,7 @@ if [[ $is_running != "" ]]
 then
         echo "Evebox is running!"
 else
-        echo "Evebox is not running - Starting it..."
+        date=$(date)
+        echo "Evebox is not running - Starting it......$date" >> /root/Pi-IDS.log
         /root/evebox server -v -D /root --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0
 fi
