@@ -8,6 +8,7 @@
 # Verify if threshold mods need service restart
 # Check out disabling rules all together
 # Rule update cronjob (suricata-update)
+# HTTP Logging?
 # Ensure threshold.conf is working
   # May need restart 
 
