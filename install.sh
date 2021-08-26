@@ -8,6 +8,8 @@
 # Verify if threshold mods need service restart
 # Check out disabling rules all together
 # Rule update cronjob (suricata-update)
+# Ensure threshold.conf is working
+  # May need restart 
 
 # Threshold.conf syntax:
   #|| # Suppression Description
