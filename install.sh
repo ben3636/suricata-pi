@@ -2,7 +2,6 @@
 
 ###---TO DO---###
 # Enable Evebox auth/custom options
-# Scirius install
 # Log management
 # Reboot persistence for all services (PENDING TESTING)
 # Push notifications via IFTTT
@@ -28,6 +27,7 @@ echo
 echo "1. Change $HOME_NET"
 echo "2. Change 'af_packet' Interface"
 echo "3. Add '/var/lib/suricata/rules/*.rules' to ruleset"
+echo "4. Uncomment threshold file"
 sleep 10
 nano /etc/suricata/suricata.yaml # Edit Home Net & Interface // Add /var/lib/suricata/*.rules
 
