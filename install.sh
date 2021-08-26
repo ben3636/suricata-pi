@@ -2,7 +2,7 @@
 
 ###---TO DO // Notes---###
 # Enable Evebox auth/custom options
-# Log management
+# Disk space push notif // response action
 # Reboot persistence for all services (PENDING TESTING)
 # Push notifications via IFTTT
 # Central log support
