@@ -7,6 +7,7 @@
 # Push notifications via IFTTT
 # Verify if threshold mods need service restart
 # Check out disabling rules all together
+# Rule update cronjob (suricata-update)
 
 # Threshold.conf syntax:
   #|| # Suppression Description
