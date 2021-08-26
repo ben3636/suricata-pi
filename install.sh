@@ -4,7 +4,7 @@
 # Enable Evebox auth/custom options
 # Scirius install
 # Log management
-# Reboot persistence for all services
+# Reboot persistence for all services (PENDING TESTING)
 # Push notifications via IFTTT
 
 # Update
