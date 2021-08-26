@@ -5,6 +5,7 @@
 # Log management
 # Reboot persistence for all services (PENDING TESTING)
 # Push notifications via IFTTT
+# Central log support
 
 # Threshold.conf syntax:
   #|| # Suppression Description
