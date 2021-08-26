@@ -122,6 +122,7 @@ wget https://evebox.org/files/release/latest/evebox-0.14.0-linux-arm64.zip
 unzip evebox-0.14.0-linux-arm64.zip 
 chmod +x /root/suricata-pi/evebox-auto-start
 mv /root/suricata-pi/evebox-auto-start /etc/cron.hourly
+mv /root/suricata-pi/evebox-0.14.0-linux-arm64/evebox /root
 clear
 echo "Install Completed!"
 echo
