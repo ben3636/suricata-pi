@@ -5,6 +5,8 @@
 # Log management
 # Reboot persistence for all services (PENDING TESTING)
 # Push notifications via IFTTT
+# Verify if threshold mods need service restart
+# Check out disabling rules all together
 
 # Threshold.conf syntax:
   #|| # Suppression Description
