@@ -1,9 +1,9 @@
 #!/bin/bash
-is_running=$(ps -ef | grep "./evebox server -v -D . --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0" | grep -v "grep")
+is_running=$(ps -ef | grep "/root/evebox server -v -D /root --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0" | grep -v "grep")
 if [[ $is_running != "" ]]
 then
         echo "Evebox is running!"
 else
         echo "Evebox is not running - Starting it..."
-        /root/suricata-pi/evebox-0.14.0-linux-arm64/evebox server -v -D /root --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0
+        /root/evebox server -v -D /root --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0
 fi
