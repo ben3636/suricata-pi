@@ -141,5 +141,7 @@ echo "Install Completed!"
 echo
 echo "Starting Evebox...Web Interface Will Be Available on Port 5636"
 sleep 10
+date=$(date)
+echo "Install Completed......$date" >> /root/Pi-IDS.log
 /etc/cron.hourly/evebox-auto-start
 
