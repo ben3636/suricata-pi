@@ -1,10 +1,14 @@
 #!/bin/bash
 
-###---TO DO---###
+###---TO DO // Notes---###
 # Enable Evebox auth/custom options
 # Log management
 # Reboot persistence for all services (PENDING TESTING)
 # Push notifications via IFTTT
+
+# Threshold.conf syntax:
+  #|| # Suppression Description
+  #|| suppress gen_id 1, sig_id 2017926, track by_{src/dst}, ip 192.168.3.2
 
 # Update
 clear
