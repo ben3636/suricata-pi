@@ -54,6 +54,7 @@ suricata-update
 # Install Service File
 mv /root/suricata-pi/suricata /etc/default/suricata 
 service suricata start
+service suricata enable
 
 # Enable IP Forwarding
 clear
@@ -77,6 +78,7 @@ sleep 5
 apt-get install bind9 -y
 nano /etc/bind/named.conf.options # Add Forwarder
 service bind9 restart
+service bind9 enable
 
 
 # Install // Enable DHCP Server
@@ -109,7 +111,9 @@ mv /root/suricata-pi/dhcpd.conf /etc/dhcp/
 clear
 echo "Please specify the IPv4 Interface for DHCP to Listen on..."
 sleep 10
-nano /etc/default/isc-dhcp-server 
+nano /etc/default/isc-dhcp-server
+service isc-dhcp-server start
+service isc-dhcp-server enable
 
 
 # Install & Run Evebox
@@ -128,5 +132,5 @@ echo "Install Completed!"
 echo
 echo "Starting Evebox...Web Interface Will Be Available on Port 5636"
 sleep 10
-cd evebox-0.14.0-linux-arm64/ && ./evebox server -v -D . --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0
+/etc/cron.hourly/evebox-auto-start
 
