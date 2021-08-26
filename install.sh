@@ -66,6 +66,10 @@ mv /root/suricata-pi/suricata /etc/default/suricata
 service suricata start
 service suricata enable
 
+# Install Suricata Auto Updater
+chmod +x /root/suricata-pi/suricata-auto-update
+mv /root/suricata-pi/suricata-auto-update /etc/cron.daily
+
 # Enable IP Forwarding
 clear
 echo "Configuring Interfaces..."
