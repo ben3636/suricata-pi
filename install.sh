@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###---TO DO // Notes---###
-# Enable Evebox auth/custom options
+# Load fn
 # Disk space push notif // response action
 # Push notifications via IFTTT
 
@@ -123,7 +123,7 @@ service isc-dhcp-server start
 service isc-dhcp-server enable
 
 
-# Install & Run Evebox
+# Install Evebox
 clear
 echo "Installing Evebox..."
 echo
@@ -132,10 +132,53 @@ apt install unzip -y
 wget https://evebox.org/files/release/latest/evebox-0.14.0-linux-arm64.zip
 unzip evebox-0.14.0-linux-arm64.zip 
 mv /root/suricata-pi/evebox-0.14.0-linux-arm64/evebox /root
+mv /root/suricata-pi/evebox.yaml /root
+
+
+# Enable Evebox Authentication & TLS
+clear
+echo "Now to enable TLS & Authentication for Evebox..."
+echo
+echo
+sleep 10
+echo
+
+echo -n "Enter a username: "
+read username </dev/tty
+while [[ $username == "" ]]
+do
+  echo
+  echo -n "Enter a username: "
+  read username </dev/tty
+done
+echo
+echo
+echo
+evebox config -D /root users add --username $username
+echo
+echo
+echo
+echo "Now to set up TLS..."
+echo
+sleep 5
+echo "Please enter a temporary password for the private key (we'll remove it in the next step)
+sleep 15
+clear
+openssl genrsa -aes128 -out eve.pem 2048
+openssl rsa -in eve.pem -out eve.pem
+echo
+echo
+echo
+echo "For the cert details, you can enter as much or as little information as you want"
+sleep 15
+openssl req -new -days 365 -key eve.pem -out eve.csr
+openssl x509 -in eve.csr -out eve-cert.pem -req -signkey eve.pem -days 365
+
 
 # Install Autostart Script in Hourly Cron
 chmod +x /root/suricata-pi/pids-auto-start
 mv /root/suricata-pi/pids-auto-start /etc/cron.hourly
+
 
 # Finish and Start Web Interface
 clear
