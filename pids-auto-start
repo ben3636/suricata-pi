@@ -5,6 +5,7 @@ suri_is_running=$(ps -ef | grep "/usr/bin/suricata -c /etc/suricata/suricata.yam
 # Verify Evebox is Running & Start It If Not
 if [[ $eve_is_running != "" ]]
 then
+        date=$(date)
         echo "Evebox is not running - Starting it......$date" >> /root/Pi-IDS.log
 else
         echo "Evebox is not running - Starting it..."
@@ -14,6 +15,7 @@ fi
 # Verify Suricata is Running & Start It If Not
 if [[ $suri_is_running != "" ]]
 then
+        date=$(date)
         echo "Suricata is not running - Starting it......$date" >> /root/Pi-IDS.log
 else
         echo "Suricata is not running - Starting it..."
