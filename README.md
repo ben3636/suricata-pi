@@ -6,7 +6,7 @@ This allows for a "plug and play" / "inline" IDS without the need for additional
 
 Going forward, I would like to implement additional scripts to use the DHCP information to alert users of new devices on the network, etc. Despite using free and open-source software, this setup provides set-it-and-forget-it Intrusion Detection and security alerts for the average home user (something most consumer-grade routers lack).
 
-This script has been tested on **buntu 20.04.3 LTS on Raspberry Pi 4**
+This script has been tested on **Ubuntu 20.04.3 LTS on Raspberry Pi 4**
 
 Please note that this is a proof-of-concept project and may impact network performance. It is also **ABSOLUTELY NECESSARY** that you disable your current DHCP server on the network prior to activating the script. Having multiple DHCP servers fight for control over the network will almost certainly cripple your network.
 
