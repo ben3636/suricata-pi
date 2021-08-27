@@ -1,0 +1,11 @@
+authentication:
+
+  # Default: false
+  # env: EVEBOX_AUTHENTICATION_REQUIRED
+  required: yes
+
+  # Type of login required:
+  # - username         -- just a username...
+  # - usernamepassword -- username and password
+  # env: EVEBOX_AUTHENTICATION_TYPE
+  type: usernamepassword
