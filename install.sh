@@ -133,8 +133,8 @@ sleep 5
 apt install unzip -y
 wget https://evebox.org/files/release/latest/evebox-0.14.0-linux-arm64.zip
 unzip evebox-0.14.0-linux-arm64.zip 
-chmod +x /root/suricata-pi/evebox-auto-start
-mv /root/suricata-pi/evebox-auto-start /etc/cron.hourly
+chmod +x /root/suricata-pi/pids-auto-start
+mv /root/suricata-pi/pids-auto-start /etc/cron.hourly
 mv /root/suricata-pi/evebox-0.14.0-linux-arm64/evebox /root
 clear
 echo "Install Completed!"
@@ -143,5 +143,5 @@ echo "Starting Evebox...Web Interface Will Be Available on Port 5636"
 sleep 10
 date=$(date)
 echo "Install Completed......$date" >> /root/Pi-IDS.log
-/etc/cron.hourly/evebox-auto-start
+/etc/cron.hourly/pids-auto-start
 
