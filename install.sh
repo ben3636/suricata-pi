@@ -52,9 +52,11 @@ suricata-update enable-source etnetera/aggressive
 suricata-update enable-source tgreen/hunting
 suricata-update
 
-# Setup Push Notifications for Suricata
+# Setup Push Notifications for Suricata & Disk Space
 mv /root/suricata-pi/ifttt /root
 chmod +x /root/ifttt/suri-push.bash
+chmod +x /root/ifttt/disk-space
+mv /root/ifttt/disk-space /etc/cron.hourly
 clear
 echo "Copy the text below and paste it into the crontab file when it opens and then save/exit..."
 sleep 5
