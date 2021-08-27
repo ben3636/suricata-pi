@@ -19,5 +19,5 @@ then
 else
         date=$(date)
         echo "Evebox is not running - Starting it......$date" >> /root/Pi-IDS.log
-        /root/evebox server -v -D /root --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0
+        /root/evebox server -D /root --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0 --tls --tls-cert /root/eve-cert.pem --tls-key /root/eve.pem -c /root/evebox.yaml
 fi
