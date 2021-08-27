@@ -53,6 +53,16 @@ suricata-update enable-source etnetera/aggressive
 suricata-update enable-source tgreen/hunting
 suricata-update
 
+# Setup Push Notifications for Suricata
+mv /root/suricata-pi/ifttt /root
+chmod +x /root/ifttt/suri-push.bash
+clear
+echo "Copy the text below and paste it into the crontab file when it open and then save it..."
+sleep 5
+echo
+echo "*/5 * * * * /root/ifttt/suri-push.bash"
+sleep 15
+crontab -e
 
 # Install Service File
 mv /root/suricata-pi/suricata /etc/default/suricata 
