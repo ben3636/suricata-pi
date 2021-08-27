@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ###---TO DO // Notes---###
-# Load fn
+# Load FN
 # Disk space push notif // response action
-# Push notifications via IFTTT
 
 # Threshold.conf syntax:
   #|| # Suppression Description
