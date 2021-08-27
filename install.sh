@@ -57,7 +57,7 @@ suricata-update
 mv /root/suricata-pi/ifttt /root
 chmod +x /root/ifttt/suri-push.bash
 clear
-echo "Copy the text below and paste it into the crontab file when it open and then save it..."
+echo "Copy the text below and paste it into the crontab file when it opens and then save/exit..."
 sleep 5
 echo
 echo "*/5 * * * * /root/ifttt/suri-push.bash"
