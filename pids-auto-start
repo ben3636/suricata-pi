@@ -2,16 +2,6 @@
 eve_is_running=$(ps -ef | grep "/root/evebox server -v -D /root --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0" | grep -v "grep")
 suri_is_running=$(ps -ef | grep "/usr/bin/suricata -c /etc/suricata/suricata.yaml" | grep -v grep)
 
-# Verify Evebox is Running & Start It If Not
-if [[ $eve_is_running != "" ]]
-then
-        echo "Evebox is running!"
-else
-        date=$(date)
-        echo "Evebox is not running - Starting it......$date" >> /root/Pi-IDS.log
-        /root/evebox server -v -D /root --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0
-fi
-
 # Verify Suricata is Running & Start It If Not
 if [[ $suri_is_running != "" ]]
 then
@@ -20,4 +10,14 @@ else
         date=$(date)
         echo "Suricata is not running - Starting it......$date" >> /root/Pi-IDS.log
         service suricata start
+fi
+
+# Verify Evebox is Running & Start It If Not
+if [[ $eve_is_running != "" ]]
+then
+        echo "Evebox is running!"
+else
+        date=$(date)
+        echo "Evebox is not running - Starting it......$date" >> /root/Pi-IDS.log
+        /root/evebox server -v -D /root --datastore sqlite --input /var/log/suricata/eve.json --host 0.0.0.0
 fi
