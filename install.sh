@@ -133,9 +133,13 @@ sleep 5
 apt install unzip -y
 wget https://evebox.org/files/release/latest/evebox-0.14.0-linux-arm64.zip
 unzip evebox-0.14.0-linux-arm64.zip 
+mv /root/suricata-pi/evebox-0.14.0-linux-arm64/evebox /root
+
+# Install Autostart Script in Hourly Cron
 chmod +x /root/suricata-pi/pids-auto-start
 mv /root/suricata-pi/pids-auto-start /etc/cron.hourly
-mv /root/suricata-pi/evebox-0.14.0-linux-arm64/evebox /root
+
+# Finish and Start Web Interface
 clear
 echo "Install Completed!"
 echo
