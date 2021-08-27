@@ -2,7 +2,6 @@
 
 ###---TO DO // Notes---###
 # Load FN
-# Disk space push notif // response action
 
 # Threshold.conf syntax:
   #|| # Suppression Description
