@@ -1,30 +1,37 @@
 #!/bin/bash
 
-###---TO DO // Notes---###
-# Load FN
-
 # Threshold.conf syntax:
   #|| # Suppression Description
   #|| suppress gen_id 1, sig_id 2017926, track by_{src/dst}, ip 192.168.3.2
 
+
+function load(){
+  for i in range {1..5}
+  do
+    echo "."
+    echo
+    sleep .02
+  done
+}
+
 # Update
 clear
 echo "Updating..."
-echo
+load
 sleep 5
 apt update && apt upgrade -y
 
 # Install Suricata
 clear
 echo "Installing Suricata..."
-echo
+load
 sleep 5
 add-apt-repository ppa:oisf/suricata-stable
 apt update
 apt-get install suricata -y
 clear
 echo "Please change the following..."
-echo
+load
 echo "1. Change $HOME_NET"
 echo "2. Change 'af_packet' Interface"
 echo "3. Add '/var/lib/suricata/rules/*.rules' to ruleset"
@@ -81,11 +88,9 @@ sleep 5
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
 
-
 # Enable Promisc Mode
 apt install net-tools -y
 ifconfig wlan0 promisc
-
 
 # Install // Enable DNS Server
 clear
@@ -97,11 +102,10 @@ nano /etc/bind/named.conf.options # Add Forwarder
 service bind9 restart
 service bind9 enable
 
-
 # Install // Enable DHCP Server
 clear
 echo "!!!---WARNING: YOU MUST DISABLE YOUR CURRENT DHCP SERVER ON THE NETWORK BEFORE CONTINUING!---!!!"
-echo
+load
 echo "Failing to do so will likely create a denial of service scenario and wreak absolute fucking havoc on your network"
 sleep 15
 echo
@@ -115,12 +119,12 @@ do
 done
 clear
 echo "Installing DHCP Server..."
-echo
+load
 sleep 10
 apt install isc-dhcp-server -y
 clear
 echo "DHCP Server has Gateway/DNS set to '192.168.1.254'"
-echo
+load
 echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'
 sleep 10
 cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.bak
@@ -136,7 +140,7 @@ service isc-dhcp-server enable
 # Install Evebox
 clear
 echo "Installing Evebox..."
-echo
+load
 sleep 5
 apt install unzip -y
 wget https://evebox.org/files/release/latest/evebox-0.14.0-linux-arm64.zip
@@ -148,8 +152,7 @@ mv /root/suricata-pi/evebox.yaml /root
 # Enable Evebox Authentication & TLS
 clear
 echo "Now to enable TLS & Authentication for Evebox..."
-echo
-echo
+load
 sleep 10
 echo
 
@@ -161,39 +164,31 @@ do
   echo -n "Enter a username: "
   read username </dev/tty
 done
-echo
-echo
-echo
+load
 evebox config -D /root users add --username $username
-echo
-echo
-echo
+clear
 echo "Now to set up TLS..."
-echo
+load
 sleep 5
 echo "Please enter a temporary password for the private key (we'll remove it in the next step)
 sleep 15
 clear
 openssl genrsa -aes128 -out eve.pem 2048
 openssl rsa -in eve.pem -out eve.pem
-echo
-echo
-echo
+load
 echo "For the cert details, you can enter as much or as little information as you want"
 sleep 15
 openssl req -new -days 365 -key eve.pem -out eve.csr
 openssl x509 -in eve.csr -out eve-cert.pem -req -signkey eve.pem -days 365
 
-
 # Install Autostart Script in Hourly Cron
 chmod +x /root/suricata-pi/pids-auto-start
 mv /root/suricata-pi/pids-auto-start /etc/cron.hourly
 
-
 # Finish and Start Web Interface
 clear
 echo "Install Completed!"
-echo
+load
 echo "Starting Evebox...Web Interface Will Be Available on Port 5636"
 sleep 10
 date=$(date)
