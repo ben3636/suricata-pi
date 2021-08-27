@@ -12,3 +12,5 @@ This script installs and configures the following components:
 4. DNS server to resolve, cache, & forward DNS queries
 5. Push notification scripts using IFTTT webhooks
 6. Autostart capability for Evebox, Suricata, & DHCP/DNS Server
+
+> ***Note: The script MUST be run as root in its current form***
