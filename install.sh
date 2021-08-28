@@ -14,12 +14,13 @@ function load(){
   done
 }
 
-cd /root
 if [[ $(whoami) != "root" ]]
 then
   echo "Error: This script must be run as root!"
   exit 1
 fi
+clear
+cd /root
 
 echo "Running pre-flight checks..."
 load
