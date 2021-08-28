@@ -1,0 +1,3 @@
+#!/bin/bash
+#Reset Sent Suricata Push Alerts
+echo '' > /root/ifttt/non-dup-push.txt
