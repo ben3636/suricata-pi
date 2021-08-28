@@ -21,6 +21,22 @@ then
   exit 1
 fi
 
+echo "Running pre-flight checks..."
+load
+sleep 5
+echo "Please set a static IP address for this machine if you have not done so already..."
+load
+echo "This includes setting a static Gateway and DNS Server"
+load
+echo -n "Please confirm this has already been done by typing 'yes' and hitting enter: "
+read confirm </dev/tty
+while [[ $confirm == "" ]] || [[ $confirm != "yes" ]]
+do
+  echo
+  echo -n "Please confirm this has already been done by typing 'yes' and hitting enter: "
+  read confirm </dev/tty
+done
+
 # Update
 clear
 echo "Updating..."
