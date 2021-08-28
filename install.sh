@@ -14,6 +14,13 @@ function load(){
   done
 }
 
+cd /root
+if [[ $(whoami) != "root" ]]
+then
+  echo "Error: This script must be run as root!"
+  exit 1
+fi
+
 # Update
 clear
 echo "Updating..."
@@ -61,6 +68,10 @@ suricata-update
 # Setup Push Notifications for Suricata & Disk Space
 mv /root/suricata-pi/ifttt /root
 chmod +x /root/ifttt/suri-push.bash
+
+chmod +x /root/suricata-pi/reset-suri-sent
+mv /root/suricata-pi/reset-suri-sent /etc/cron.daily
+
 chmod +x /root/ifttt/disk-space
 mv /root/ifttt/disk-space /etc/cron.hourly
 clear
