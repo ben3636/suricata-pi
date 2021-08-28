@@ -10,7 +10,7 @@ function load(){
   do
     echo "."
     echo
-    sleep .02
+    sleep .5
   done
 }
 
@@ -23,11 +23,13 @@ clear
 cd /root
 
 echo "Running pre-flight checks..."
-load
 sleep 5
+load
 echo "Please set a static IP address for this machine if you have not done so already..."
+sleep 5
 load
 echo "This includes setting a static Gateway and DNS Server"
+sleep 5
 load
 echo -n "Please confirm this has already been done by typing 'yes' and hitting enter: "
 read confirm </dev/tty
