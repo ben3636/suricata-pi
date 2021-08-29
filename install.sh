@@ -44,7 +44,6 @@ done
 clear
 echo "Updating..."
 load
-sleep 5
 apt update && apt upgrade -y
 
 # Install Suricata
@@ -59,7 +58,7 @@ clear
 echo "Please change the following..."
 sleep 5
 load
-echo "1. Change $HOME_NET"
+echo "1. Change \$HOME_NET"
 echo "2. Change 'af_packet' Interface"
 echo "3. Add '/var/lib/suricata/rules/*.rules' to ruleset"
 echo "4. Uncomment threshold file"
@@ -114,8 +113,8 @@ mv /root/suricata-pi/suricata-auto-update /etc/cron.daily
 # Enable IP Forwarding
 clear
 echo "Configuring Interfaces..."
-echo
 sleep 5
+load
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
 
@@ -201,7 +200,7 @@ clear
 echo "Now to set up TLS..."
 load
 sleep 5
-echo "Please enter a temporary password for the private key (we will remove it in the next step)
+echo "Please enter a temporary password for the private key (we will remove it in the next step)"
 sleep 15
 clear
 openssl genrsa -aes128 -out eve.pem 2048
