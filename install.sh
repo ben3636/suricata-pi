@@ -134,8 +134,8 @@ echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
 
 # Enable Promisc Mode
-interface=$(/usr/sbin/ifconfig | grep ":" | awk ' { print $1 } ' | grep ":" | grep -v "lo:" | sed s/":"//g)
-ifconfig $interface promisc
+#interface=$(/usr/sbin/ifconfig | grep ":" | awk ' { print $1 } ' | grep ":" | grep -v "lo:" | sed s/":"//g)
+#ifconfig $interface promisc
 
 # Install // Enable DNS Server
 clear
