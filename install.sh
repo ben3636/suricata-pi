@@ -73,7 +73,7 @@ echo "3. Add '/var/lib/suricata/rules/*.rules' to ruleset"
 echo "4. Uncomment threshold file"
 sleep 20
 nano /etc/suricata/suricata.yaml # Edit Home Net & Interface // Add /var/lib/suricata/*.rules
-
+apt install net-tools -y
 clear
 echo "Please set/verify the interface for Suricata in the service file..."
 sleep 10
@@ -134,7 +134,6 @@ echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
 
 # Enable Promisc Mode
-apt install net-tools -y
 interface=$(/usr/sbin/ifconfig | grep ":" | awk ' { print $1 } ' | grep ":" | grep -v "lo:" | sed s/":"//g)
 ifconfig $interface promisc
 
