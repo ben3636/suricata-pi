@@ -8,7 +8,7 @@ Going forward, I would like to implement additional scripts to use the DHCP info
 
 This script has been tested on **Ubuntu 20.04.3 LTS on Raspberry Pi 4**
 
-Please note that this is a proof-of-concept project and may impact network performance. It is also **ABSOLUTELY NECESSARY** that you disable your current DHCP server on the network prior running the install. Having multiple DHCP servers fight for control over the network will almost certainly cripple it.
+Please note that this is a proof-of-concept project and may impact network performance. When tested on a Raspberry Pi 4 (4GB RAM) using the Gigabit Ethernet port, the network speeds remained well over 200mb/s but this may vary. It is also **ABSOLUTELY NECESSARY** that you disable your current DHCP server on the network prior running the install. Having multiple DHCP servers fight for control over the network will almost certainly cripple it.
 
 This script installs and configures the following components:
 
