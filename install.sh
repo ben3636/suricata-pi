@@ -65,6 +65,12 @@ echo "4. Uncomment threshold file"
 sleep 20
 nano /etc/suricata/suricata.yaml # Edit Home Net & Interface // Add /var/lib/suricata/*.rules
 
+clear
+echo "Please set/verify the interface for Suricata in the service file..."
+sleep 10
+load
+nano /root/suricata-pi/suricata
+
 # Unpack Additional Rules
 mkdir /root/suricata-pi/snort-rules
 tar -xvf /root/suricata-pi/snortrules-snapshot-2983.tar.gz -C /root/suricata-pi/snort-rules/
@@ -158,6 +164,10 @@ load
 echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'"
 sleep 10
 load
+echo "Please check the parameters in the DHCP server config and make any needed adjustments..."
+sleep 10
+load
+nano /root/suricata-pi/dhcpd.conf
 cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.bak
 mv /root/suricata-pi/dhcpd.conf /etc/dhcp/
 clear
@@ -167,6 +177,15 @@ nano /etc/default/isc-dhcp-server
 service isc-dhcp-server start
 service isc-dhcp-server enable
 
+# Verify IFTTT Webhook
+clear
+echo "Please update the push notification scripts with your custom IFTTT Webhook address"
+load
+echo "Modify only the IFTTT url instances, making additional changes may break the script"
+sleep 10
+load
+nano /root/ifttt/suri-push.bash
+nano /etc/cron.daily/reset-suri-sent
 
 # Install Evebox
 clear
@@ -178,7 +197,6 @@ wget https://evebox.org/files/release/latest/evebox-0.14.0-linux-arm64.zip
 unzip evebox-0.14.0-linux-arm64.zip 
 mv /root/evebox-0.14.0-linux-arm64/evebox /root
 mv /root/suricata-pi/evebox.yaml /root
-
 
 # Enable Evebox Authentication & TLS
 clear
