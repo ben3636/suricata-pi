@@ -135,7 +135,8 @@ sysctl -p
 
 # Enable Promisc Mode
 apt install net-tools -y
-ifconfig wlan0 promisc
+interface=$(/usr/sbin/ifconfig | grep ":" | awk ' { print $1 } ' | grep ":" | grep -v "lo:" | sed s/":"//g)
+ifconfig $interface promisc
 
 # Install // Enable DNS Server
 clear
@@ -171,7 +172,7 @@ then
   clear
   echo "!!!---WARNING: YOU MUST DISABLE YOUR CURRENT DHCP SERVER ON THE NETWORK BEFORE CONTINUING!---!!!"
   load
-  echo "Failing to do so will likely create a denial of service scenario and wreak absolute fucking havoc on your network"
+  echo "Failing to do so will likely create a denial of service scenario and wreak absolute fucking havoc on your network..."
   sleep 15
   load
   echo -n "Type 'yes' once this is complete and press enter: "
@@ -188,9 +189,9 @@ then
   load
   apt install isc-dhcp-server -y
   clear
-  echo "DHCP Server has Gateway/DNS set to '192.168.1.254'"
+  echo "DHCP Server has Gateway/DNS set to '192.168.1.254'..."
   load
-  echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'"
+  echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'..."
   sleep 10
   load
   echo "Please check the parameters in the DHCP server config and make any needed adjustments..."
@@ -215,10 +216,10 @@ fi
 
 # Verify IFTTT Webhook
 clear
-echo "Please update the push notification scripts with your custom IFTTT Webhook address"
+echo "Please update the push notification scripts with your custom IFTTT Webhook address..."
 sleep 15
 load
-echo "Modify only the IFTTT URL instances, making additional changes may break the script"
+echo "Modify only the IFTTT URL instances, making additional changes may break the script..."
 sleep 10
 load
 nano /root/ifttt/suri-push.bash
