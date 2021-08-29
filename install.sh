@@ -157,6 +157,7 @@ echo "DHCP Server has Gateway/DNS set to '192.168.1.254'"
 load
 echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'"
 sleep 10
+load
 cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.bak
 mv /root/suricata-pi/dhcpd.conf /etc/dhcp/
 clear
@@ -170,12 +171,12 @@ service isc-dhcp-server enable
 # Install Evebox
 clear
 echo "Installing Evebox..."
-load
 sleep 5
+load
 apt install unzip -y
 wget https://evebox.org/files/release/latest/evebox-0.14.0-linux-arm64.zip
 unzip evebox-0.14.0-linux-arm64.zip 
-mv /root/suricata-pi/evebox-0.14.0-linux-arm64/evebox /root
+mv /root/evebox-0.14.0-linux-arm64/evebox /root
 mv /root/suricata-pi/evebox.yaml /root
 
 
@@ -183,7 +184,7 @@ mv /root/suricata-pi/evebox.yaml /root
 clear
 echo "Now to enable TLS & Authentication for Evebox..."
 load
-sleep 10
+sleep 5
 echo
 
 echo -n "Enter a username: "
@@ -197,17 +198,19 @@ done
 load
 evebox config -D /root users add --username $username
 clear
-echo "Now to set up TLS..."
-load
+echo "Setting up TLS..."
 sleep 5
+load
 echo "Please enter a temporary password for the private key - We will remove it in the next step"
 sleep 15
-clear
+load
 openssl genrsa -aes128 -out eve.pem 2048
 openssl rsa -in eve.pem -out eve.pem
 load
+clear
 echo "For the cert details, you can enter as much or as little information as you want"
 sleep 15
+load
 openssl req -new -days 365 -key eve.pem -out eve.csr
 openssl x509 -in eve.csr -out eve-cert.pem -req -signkey eve.pem -days 365
 
