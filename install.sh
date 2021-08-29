@@ -196,7 +196,7 @@ then
   nano /etc/default/isc-dhcp-server
   service isc-dhcp-server start
   service isc-dhcp-server enable
-elif [[ install == "no" ]]
+elif [[ $install == "no" ]]
 then
   load
   echo "Skipping DHCP Server Installation"
@@ -208,7 +208,7 @@ fi
 clear
 echo "Please update the push notification scripts with your custom IFTTT Webhook address"
 load
-echo "Modify only the IFTTT url instances, making additional changes may break the script"
+echo "Modify only the IFTTT URL instances, making additional changes may break the script"
 sleep 10
 load
 nano /root/ifttt/suri-push.bash
