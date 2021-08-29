@@ -212,7 +212,7 @@ echo "Modify only the IFTTT URL instances, making additional changes may break t
 sleep 10
 load
 nano /root/ifttt/suri-push.bash
-nano /etc/cron.daily/reset-suri-sent
+nano /etc/cron.hourly/disk-space
 
 # Install Evebox
 clear
