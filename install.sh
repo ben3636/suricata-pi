@@ -252,7 +252,7 @@ do
   read username </dev/tty
 done
 load
-evebox config -D /root users add --username $username
+/root/evebox config -D /root users add --username $username
 clear
 echo "Setting up TLS..."
 sleep 5
