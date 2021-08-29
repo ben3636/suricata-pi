@@ -50,19 +50,20 @@ apt update && apt upgrade -y
 # Install Suricata
 clear
 echo "Installing Suricata..."
-load
 sleep 5
+load
 add-apt-repository ppa:oisf/suricata-stable
 apt update
 apt-get install suricata -y
 clear
 echo "Please change the following..."
+sleep 5
 load
 echo "1. Change $HOME_NET"
 echo "2. Change 'af_packet' Interface"
 echo "3. Add '/var/lib/suricata/rules/*.rules' to ruleset"
 echo "4. Uncomment threshold file"
-sleep 10
+sleep 20
 nano /etc/suricata/suricata.yaml # Edit Home Net & Interface // Add /var/lib/suricata/*.rules
 
 # Unpack Additional Rules
@@ -125,8 +126,8 @@ ifconfig wlan0 promisc
 # Install // Enable DNS Server
 clear
 echo "Installing DNS Server..."
-echo
 sleep 5
+load
 apt-get install bind9 -y
 nano /etc/bind/named.conf.options # Add Forwarder
 service bind9 restart
@@ -149,8 +150,8 @@ do
 done
 clear
 echo "Installing DHCP Server..."
+sleep 5
 load
-sleep 10
 apt install isc-dhcp-server -y
 clear
 echo "DHCP Server has Gateway/DNS set to '192.168.1.254'"
@@ -200,7 +201,7 @@ clear
 echo "Now to set up TLS..."
 load
 sleep 5
-echo "Please enter a temporary password for the private key (we'll remove it in the next step)
+echo "Please enter a temporary password for the private key (we will remove it in the next step)
 sleep 15
 clear
 openssl genrsa -aes128 -out eve.pem 2048
