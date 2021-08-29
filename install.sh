@@ -28,7 +28,7 @@ load
 echo "Please set a static IP address for this machine if you have not done so already..."
 sleep 5
 load
-echo "This includes setting a static Gateway and DNS Server"
+echo "This includes setting a static Gateway and DNS Server..."
 sleep 5
 load
 echo -n "Please confirm this has already been done by typing 'yes' and hitting enter: "
@@ -160,7 +160,7 @@ sleep 15
 load
 echo -n "Do you need to install a new DHCP server now? (yes/no): "
 read install </dev/tty
-while [[ $install == "" ]] && [[ $install != "yes" ]] || [[ $install != "no" ]]
+while [[ $install == "" ]] && [[ $install != "yes" ]] && [[ $install != "no" ]]
 do
   echo
   echo -n "Do you need to install a new DHCP server now? (yes/no): "
