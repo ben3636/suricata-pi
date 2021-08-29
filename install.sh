@@ -147,72 +147,45 @@ nano /etc/bind/named.conf.options # Add Forwarder
 service bind9 restart
 service bind9 enable
 
-# Install // Enable DHCP Server If Elected
+# Install // Enable DHCP Server
 clear
-echo "Please determine if you need to install the DHCP server on the Pi..."
-sleep 5
+echo "!!!---WARNING: YOU MUST DISABLE YOUR CURRENT DHCP SERVER ON THE NETWORK BEFORE CONTINUING!---!!!"
 load
-echo "If you can modify the parameters on the current router (set the Gateway/DNS values to the static IP of this Pi), do that and skip the DHCP install..."
+echo "Failing to do so will likely create a denial of service scenario and wreak absolute fucking havoc on your network..."
 sleep 15
 load
-echo "Some home routers will not allow you to do this. If this is the case, you will need to disable the current DHCP server on the router and install one here..."
-sleep 15
-load
-echo -n "Do you need to install a new DHCP server now? (yes/no): "
-read install </dev/tty
-while [[ $install == "" ]] && [[ $install != "yes" ]] && [[ $install != "no" ]]
+echo -n "Type 'yes' once this is complete and press enter: "
+read choice </dev/tty
+while [[ $choice == "" ]] || [[ $choice != "yes" ]]
 do
   echo
-  echo -n "Do you need to install a new DHCP server now? (yes/no): "
-  read install </dev/tty
-done
-if [[ $install == "yes" ]]
-then
-  clear
-  echo "!!!---WARNING: YOU MUST DISABLE YOUR CURRENT DHCP SERVER ON THE NETWORK BEFORE CONTINUING!---!!!"
-  load
-  echo "Failing to do so will likely create a denial of service scenario and wreak absolute fucking havoc on your network..."
-  sleep 15
-  load
   echo -n "Type 'yes' once this is complete and press enter: "
   read choice </dev/tty
-  while [[ $choice == "" ]] || [[ $choice != "yes" ]]
-  do
-    echo
-    echo -n "Type 'yes' once this is complete and press enter: "
-    read choice </dev/tty
-  done
-  clear
-  echo "Installing DHCP Server..."
-  sleep 5
-  load
-  apt install isc-dhcp-server -y
-  clear
-  echo "DHCP Server has Gateway/DNS set to '192.168.1.254'..."
-  load
-  echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'..."
-  sleep 10
-  load
-  echo "Please check the parameters in the DHCP server config and make any needed adjustments..."
-  sleep 10
-  load
-  nano /root/suricata-pi/dhcpd.conf
-  cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.bak
-  mv /root/suricata-pi/dhcpd.conf /etc/dhcp/
-  clear
-  echo "Please specify the IPv4 Interface for DHCP to Listen on..."
-  sleep 10
-  load
-  nano /etc/default/isc-dhcp-server
-  service isc-dhcp-server start
-  service isc-dhcp-server enable
-elif [[ $install == "no" ]]
-then
-  load
-  echo "Skipping DHCP Server Installation..."
-  sleep 5
-  clear
-fi
+done
+clear
+echo "Installing DHCP Server..."
+sleep 5
+load
+apt install isc-dhcp-server -y
+clear
+echo "DHCP Server has Gateway/DNS set to '192.168.1.254'..."
+load
+echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'..."
+sleep 10
+load
+echo "Please check the parameters in the DHCP server config and make any needed adjustments..."
+sleep 10
+load
+nano /root/suricata-pi/dhcpd.conf
+cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.bak
+mv /root/suricata-pi/dhcpd.conf /etc/dhcp/
+clear
+echo "Please specify the IPv4 Interface for DHCP to Listen on..."
+sleep 10
+load
+nano /etc/default/isc-dhcp-server
+service isc-dhcp-server start
+service isc-dhcp-server enable
 
 # Verify IFTTT Webhook
 clear
