@@ -202,6 +202,7 @@ then
   clear
   echo "Please specify the IPv4 Interface for DHCP to Listen on..."
   sleep 10
+  load
   nano /etc/default/isc-dhcp-server
   service isc-dhcp-server start
   service isc-dhcp-server enable
