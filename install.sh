@@ -155,7 +155,7 @@ apt install isc-dhcp-server -y
 clear
 echo "DHCP Server has Gateway/DNS set to '192.168.1.254'"
 load
-echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'
+echo "Please set this as your static IP or change those values in '/etc/dhcp/dhcpd.conf'"
 sleep 10
 cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.bak
 mv /root/suricata-pi/dhcpd.conf /etc/dhcp/
