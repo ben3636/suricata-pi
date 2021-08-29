@@ -138,7 +138,7 @@ echo "!!!---WARNING: YOU MUST DISABLE YOUR CURRENT DHCP SERVER ON THE NETWORK BE
 load
 echo "Failing to do so will likely create a denial of service scenario and wreak absolute fucking havoc on your network"
 sleep 15
-echo
+load
 echo -n "Type 'yes' once this is complete and press enter: "
 read choice </dev/tty
 while [[ $choice == "" ]] || [[ $choice != "yes" ]]
@@ -200,7 +200,7 @@ clear
 echo "Now to set up TLS..."
 load
 sleep 5
-echo "Please enter a temporary password for the private key (we will remove it in the next step)"
+echo "Please enter a temporary password for the private key \(we will remove it in the next step\)"
 sleep 15
 clear
 openssl genrsa -aes128 -out eve.pem 2048
