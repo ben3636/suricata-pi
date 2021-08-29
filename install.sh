@@ -51,7 +51,7 @@ clear
 echo "Please note the interfaces on the system and take note of which one will be used for DNS/DHCP/Suricata..."
 sleep 15
 load
-ifconfig
+/usr/sbin/ifconfig
 sleep 15
 load
 
