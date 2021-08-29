@@ -46,6 +46,15 @@ echo "Updating..."
 load
 apt update && apt upgrade -y
 
+# Show Interfaces
+clear
+echo "Please note the interfaces on the system and take note of which one will be used for DNS/DHCP/Suricata..."
+sleep 15
+load
+ifconfig
+sleep 15
+load
+
 # Install Suricata
 clear
 echo "Installing Suricata..."
@@ -140,14 +149,14 @@ service bind9 enable
 
 # Install // Enable DHCP Server If Elected
 clear
-echo "Please determine if you need to install the DHCP server on the Pi"
+echo "Please determine if you need to install the DHCP server on the Pi..."
 sleep 5
 load
-echo "If you can modify the parameters on the current router (set the Gateway/DNS values to the static IP of this Pi), do that and skip the DHCP install"
-sleep 10
+echo "If you can modify the parameters on the current router (set the Gateway/DNS values to the static IP of this Pi), do that and skip the DHCP install..."
+sleep 15
 load
-echo "Some home routers will not allow you to do this. In this case you will need to disable the current DHCP server on the router and install one here"
-sleep 10
+echo "Some home routers will not allow you to do this. If this is the case, you will need to disable the current DHCP server on the router and install one here..."
+sleep 15
 load
 echo -n "Do you need to install a new DHCP server now? (yes/no): "
 read install </dev/tty
@@ -199,7 +208,7 @@ then
 elif [[ $install == "no" ]]
 then
   load
-  echo "Skipping DHCP Server Installation"
+  echo "Skipping DHCP Server Installation..."
   sleep 5
   clear
 fi
@@ -207,6 +216,7 @@ fi
 # Verify IFTTT Webhook
 clear
 echo "Please update the push notification scripts with your custom IFTTT Webhook address"
+sleep 15
 load
 echo "Modify only the IFTTT URL instances, making additional changes may break the script"
 sleep 10
@@ -246,14 +256,14 @@ clear
 echo "Setting up TLS..."
 sleep 5
 load
-echo "Please enter a temporary password for the private key - We will remove it in the next step"
+echo "Please enter a temporary password for the private key - We will remove it in the next step..."
 sleep 15
 load
 openssl genrsa -aes128 -out eve.pem 2048
 openssl rsa -in eve.pem -out eve.pem
 load
 clear
-echo "For the cert details, you can enter as much or as little information as you want"
+echo "For the cert details, you can enter as much or as little information as you wish..."
 sleep 15
 load
 openssl req -new -days 365 -key eve.pem -out eve.csr
