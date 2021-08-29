@@ -102,7 +102,7 @@ sleep 15
 crontab -e
 
 # Install Service File
-mv /root/suricata-pi/suricata /etc/default/suricata 
+mv /root/suricata-pi/suricata /etc/default/ 
 service suricata start
 service suricata enable
 
@@ -200,7 +200,7 @@ clear
 echo "Now to set up TLS..."
 load
 sleep 5
-echo "Please enter a temporary password for the private key \(we will remove it in the next step\)"
+echo "Please enter a temporary password for the private key - We will remove it in the next step"
 sleep 15
 clear
 openssl genrsa -aes128 -out eve.pem 2048
