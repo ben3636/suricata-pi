@@ -45,6 +45,7 @@ clear
 echo "Updating..."
 load
 apt update && apt upgrade -y
+apt install net-tools -y
 
 # Show Interfaces
 clear
@@ -73,7 +74,6 @@ echo "3. Add '/var/lib/suricata/rules/*.rules' to ruleset"
 echo "4. Uncomment threshold file"
 sleep 20
 nano /etc/suricata/suricata.yaml # Edit Home Net & Interface // Add /var/lib/suricata/*.rules
-apt install net-tools -y
 clear
 echo "Please set/verify the interface for Suricata in the service file..."
 sleep 10
