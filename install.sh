@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# Threshold.conf syntax:
+# --NOTE--
+  # This script assumes there is one wired 'eth0' interface, as the script is designed to run on a Pi's ethernet port. 
+  # If you have want to use Wifi or an interface with a different name, please search for both occurences of 'eth0' and replace them with the correct value
+
+# Threshold.conf Syntax:
   #|| # Suppression Description
   #|| suppress gen_id 1, sig_id 2017926, track by_{src/dst}, ip 192.168.3.2
-
 
 function load(){
   for i in range {1..5}
@@ -134,8 +137,7 @@ echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
 
 # Enable Promisc Mode
-interface=$(/usr/sbin/ifconfig | grep ":" | awk ' { print $1 } ' | grep ":" | grep -v "lo:" | sed s/":"//g)
-ifconfig $interface promisc
+ifconfig eth0 promisc
 
 # Install // Enable DNS Server
 clear
@@ -246,6 +248,20 @@ openssl x509 -in eve.csr -out eve-cert.pem -req -signkey eve.pem -days 365
 # Install Autostart Script in Hourly Cron
 chmod +x /root/suricata-pi/pids-auto-start
 mv /root/suricata-pi/pids-auto-start /etc/cron.hourly
+
+# Secure Pi with Firewall
+clear
+echo "Securing Device with Firewall..."
+sleep 5
+load
+ufw reset # Reset UFW
+ufw default deny # Set Default Policy to Deny
+ufw allow from 192.168.0.0/24 to 192.168.0.254 port 22 proto tcp # Allow SSH from LAN
+ufw allow from 192.168.0.0/24 to 192.168.0.254 port 5636 proto tcp # Allow Evebox HTTPS from LAN
+ufw allow from 192.168.0.0/24 to 192.168.0.254 port 53 proto udp # Allow DNS from LAN
+ufw route allow in on out on eth0 # Allow FWD'ing on Ethernet Port
+ufw enable # Enable FW
+ufw status # List Rules
 
 # Finish and Start Web Interface
 clear
