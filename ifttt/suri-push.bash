@@ -5,7 +5,7 @@ function push_notif(){
         message=$1
         v2=$2
         v3=$3
-        curl -X POST -H "Content-Type: application/json" -d '{"value1":"'"$message"'","value2":"'"$v2"'","value3":"'"$v3"'"}' https://maker.ifttt.com/trigger/Pi-IDS/with/key/UntimRA5FlDbyVp5GRuNU
+        curl -X POST -H "Content-Type: application/json" -d '{"value1":"'"$message"'","value2":"'"$v2"'","value3":"'"$v3"'"}' https://maker.ifttt.com/trigger/XXXXXXX/with/key/XXXXXXXXXXXXX
 }
 
 ###---Parse Suricata Logs to 'suri-log.txt'---###
