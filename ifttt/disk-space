@@ -6,5 +6,5 @@ then
         message="Log Server Disk Space Has Reached"
         v2=$percent
         v3="Capacity"
-        curl -X POST -H "Content-Type: application/json" -d '{"value1":"'"$message"'","value2":"'"$v2"'","value3":"'"$v3"'"}' https://maker.ifttt.com/trigger/Pi-IDS/with/key/UntimRA5FlDbyVp5GRuNU
+        curl -X POST -H "Content-Type: application/json" -d '{"value1":"'"$message"'","value2":"'"$v2"'","value3":"'"$v3"'"}' https://maker.ifttt.com/trigger/XXXXX/with/key/XXXXXXXXXXXXXXXXX
 fi
